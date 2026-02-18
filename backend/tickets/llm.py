@@ -58,5 +58,5 @@ Ticket description:
         }
 
     except Exception:
-        # Graceful failure
+        
         return None

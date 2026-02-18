@@ -51,7 +51,7 @@ class TicketStatsView(APIView):
 
         open_tickets = Ticket.objects.filter(status='open').count()
 
-        # Average tickets per day
+        
         daily_counts = (
             Ticket.objects
             .annotate(date=TruncDate('created_at'))
@@ -64,7 +64,7 @@ class TicketStatsView(APIView):
             avg=Avg('count')
         )['avg'] or 0
 
-        # Priority breakdown
+        
         priority_breakdown_qs = (
             Ticket.objects
             .values('priority')
@@ -76,7 +76,7 @@ class TicketStatsView(APIView):
             for item in priority_breakdown_qs
         }
 
-        # Category breakdown
+        
         category_breakdown_qs = (
             Ticket.objects
             .values('category')
