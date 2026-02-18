@@ -1,5 +1,6 @@
 version: "3.9"
 
+
 services:
   db:
     image: postgres:15
@@ -15,6 +16,8 @@ services:
 
   backend:
     build: ./backend
+    env_file:
+      - .env
     volumes:
       - ./backend:/app
     ports:
@@ -27,6 +30,7 @@ services:
       - DB_PASSWORD=postgres
       - DB_HOST=db
       - DB_PORT=5432
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
 
 volumes:
   postgres_data:

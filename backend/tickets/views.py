@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from django.db.models import Count
 from django.db.models.functions import TruncDate
 from django.db.models import Avg
+from .llm import classify_ticket
 
 class TicketListCreateView(generics.ListCreateAPIView):
     serializer_class = TicketSerializer
@@ -94,3 +95,24 @@ class TicketStatsView(APIView):
             "priority_breakdown": priority_breakdown,
             "category_breakdown": category_breakdown
         })
+    
+class TicketClassifyView(APIView):
+
+    def post(self, request):
+        description = request.data.get("description")
+
+        if not description:
+            return Response(
+                {"error": "Description is required"},
+                status=400
+            )
+
+        result = classify_ticket(description)
+
+        if not result:
+            return Response(
+                {"error": "LLM unavailable"},
+                status=200
+            )
+
+        return Response(result)
