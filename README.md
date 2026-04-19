@@ -126,19 +126,7 @@ Supports filters: ?category= ?priority= ?status= ?search=
 ------------------------------------------------------------------------
 
 
-## Evaluation Coverage
-
--   Docker End-to-End: Yes
--   LLM Integration: Yes
--   DB Constraints: Yes
--   API Design: Yes
--   DB Aggregation: Yes
--   React Structure: Yes
--   Code Quality: Yes
--   Commit History: Included
--   README: Included
-
-------------------------------------------------------------------------
+loom link : https://www.loom.com/share/d615a703bbfd4aadaad1ca0ba8f0290d
 
 The application runs with:
 
